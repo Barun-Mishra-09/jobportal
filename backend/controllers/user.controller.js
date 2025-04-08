@@ -349,7 +349,7 @@ export const googleLogin = async (req, res) => {
 
     console.log("Received Google code:", code);
 
-    const redirectUri = "http://localhost:5173"; // Must match exactly what you gave in Google Console
+    const redirectUri = "https://jobportal-3bym.onrender.com"; // Must match exactly what you gave in Google Console
 
     // Step 1: Exchange code for tokens
     const { data: tokenData } = await axios.post(
