@@ -26,7 +26,7 @@ app.use(cookieParser());
 
 // cors use
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: "https://jobportal-3bym.onrender.com",
   credentials: true,
 };
 app.use(cors(corsOptions));
