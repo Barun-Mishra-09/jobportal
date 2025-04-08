@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "http://localhost:8000/api/v1/user",
+  baseURL: "https://jobportal-3bym.onrender.com/api/v1/user",
   withCredentials: true,
 });
 
