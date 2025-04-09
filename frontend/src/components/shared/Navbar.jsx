@@ -71,24 +71,49 @@ const Navbar = () => {
 
         {/* Right Navbar Links */}
         <div
-          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none transition-all duration-300 ease-in-out ${
-            menuOpen ? "block h-screen overflow-y-auto" : "hidden"
-          } md:flex md:items-center md:gap-12 p-4 md:p-0`}
+          className={`absolute md:static top-16 left-0 w-full md:w-auto bg-white md:bg-transparent  transition-all duration-300 ease-in-out overflow-hidden md:overflow-visible z-40 ${
+            menuOpen ? "max-h-[90vh] shadow-md p-4 overflow-y-auto" : "max-h-0"
+          } md:flex md:items-center md:gap-12  md:p-0 md:max-h-full`}
         >
           {/* UPDATED HERE: Avatar moved above navigation */}
-          <div className="flex flex-col items-start gap-4 md:hidden">
-            {user && (
+
+          {user && (
+            <div className="flex flex-col items-start gap-2 md:hidden mb-4">
               <Avatar className="cursor-pointer w-10 h-10">
                 <AvatarImage
                   src={user?.profile?.profilePhoto}
                   alt="User Avatar"
                 />
               </Avatar>
-            )}
-          </div>
+
+              {/* create view profile button for Mobile */}
+              {user.role === "student" && (
+                <Button
+                  variant="ghost"
+                  className="text-blue-600
+          "
+                  onClick={() => {
+                    navigate("/profile");
+                    setMenuOpen(false); // close menu on navigation
+                  }}
+                >
+                  <User2 className="mr-2" />
+                  view profile
+                </Button>
+              )}
+              {/* create a button for Logout */}
+              <Button
+                onClick={logoutHandler}
+                variant="ghost"
+                className="text-red-500"
+              >
+                <LogOut className="mr-2" /> Logout
+              </Button>
+            </div>
+          )}
 
           {/* Navigation Links */}
-          <ul className="flex font-medium items-center gap-4 flex-col md:flex-row md:gap-5">
+          <ul className="flex font-medium items-start gap-4 flex-col md:flex-row md:gap-5 md:items-center">
             {user && user.role === "recruiter" ? (
               <>
                 <li
@@ -158,8 +183,8 @@ const Navbar = () => {
 
           {/* User Authentication Section */}
           {!user ? (
-            <div className="flex items-center gap-2 flex-col md:flex-row mt-4 justify-center md:mt-0">
-              <Link to="/login">
+            <div className="flex items-center gap-2 flex-col md:flex-row mt-4  md:mt-0">
+              <Link to="/login" onClick={() => setMenuOpen(false)}>
                 <Button
                   variant="outline"
                   className=" text-[#5812d0] text-[15px] border border-[#5812d0] p-2.5 hover:text-[#5812d0] hover:bg-white hover:shadow-md font-medium gap-1 rounded-sm "
@@ -168,15 +193,8 @@ const Navbar = () => {
                   Login
                 </Button>
               </Link>
-              <Link to="/signup">
+              <Link to="/signup" onClick={() => setMenuOpen(false)}>
                 <Button className=" flex items-center gap-2 bg-[#ff6600] hover:bg-[#ff6600] rounded-sm shadow-md">
-                  {/* <img
-                    src={Register_icon}
-                    height={24}
-                    width={24}
-                    alt="register_icon"
-                    className="text-white "
-                  /> */}
                   <PenBox />
                   Signup
                 </Button>
@@ -193,7 +211,8 @@ const Navbar = () => {
                     />
                   </Avatar>
                 </PopoverTrigger>
-                <PopoverContent className="w-80 max-w-xs md:left-0 md:right-0">
+                {/* change the  className  of w-80 to w-full  */}
+                <PopoverContent className="w-full max-w-xs md:left-0 md:right-0 md:w-80">
                   <div className="flex gap-4 space-y-2">
                     <Avatar className="cursor-pointer">
                       <AvatarImage

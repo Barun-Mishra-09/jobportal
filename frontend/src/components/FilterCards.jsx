@@ -35,11 +35,7 @@ const filterData = [
       "Data Science",
     ],
   },
-  {
-    filterType: "Salary",
-    type: "radio",
-    array: ["0-50LPA", "5LPA-10LPA", "11 LPA-50 LPA", "5LPA-100LPA"],
-  },
+
   {
     filterType: "Skills",
     type: "radio",

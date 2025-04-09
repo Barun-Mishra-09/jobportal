@@ -93,13 +93,13 @@ const HeroSection = () => {
 
         {/* Subtitle */}
         <motion.p
-          className="text-[#F83002] bg-white bg-opacity-80 mx-auto px-6 py-3 rounded-full shadow-xl cursor-pointer text-sm sm:text-base md:text-lg max-w-fit whitespace-nowrap backdrop-blur"
+          className="text-[#F83002] bg-white bg-opacity-80 mx-auto px-4 py-3 rounded-2xl shadow-xl cursor-pointer text-sm sm:text-base md:text-lg max-w-[90%] sm:max-w-xl  lg:max-w-4xl lg:whitespace-nowrap text-center whitespace-normal break-words backdrop-blur"
           initial={{ y: 20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.5 }}
         >
-          ✨ Endless opportunities await! Your dream job is just a search
-          away—start your journey today.
+          ✨ Endless opportunities await! Your dream job is just a search away —
+          start your journey today.
         </motion.p>
 
         {/* Search Bar */}
